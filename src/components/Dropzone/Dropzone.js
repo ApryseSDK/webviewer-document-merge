@@ -1,9 +1,25 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './styles.css';
 
 const Dropzone = () => {
   const dropRef = useRef(null);
+  const fileListRef = useRef(null);
   const [docs, addDocument] = useState([]);
+  const [thumbArray, addThumbToArray] = useState([]);
+
+  useEffect(() => {
+    if (docs.length >= 1) {
+      const CoreControls = window.CoreControls;
+      CoreControls.setWorkerPath('/webviewer/lib/core');
+      const loadDocumentAndThumb = async () => {
+        const doc = await CoreControls.createDocument(docs[docs.length - 1]);
+        doc.loadThumbnailAsync(1, thumbnail => {
+          addThumbToArray([...thumbArray, thumbnail]);
+        });
+      }
+      loadDocumentAndThumb();     
+    }
+  }, [docs]);
 
   const mergeDocuments = async () => {
     const CoreControls = window.CoreControls;
@@ -59,19 +75,26 @@ const Dropzone = () => {
   };
 
   return (
-    <div
-      className="dropDiv"
-      ref={dropRef}
-      onDrop={ev => {
-        onDropEvent(ev);
-      }}
-      onDragOver={ev => {
-        ev.preventDefault();
-        ev.dataTransfer.dropEffect = 'move';
-      }}
-    >
-      <p>Drop the thumbs from the viewers here</p>
-      <button onClick={mergeDocuments}>Download</button>
+    <div>
+      <div
+        className="dropDiv"
+        ref={dropRef}
+        onDrop={ev => {
+          onDropEvent(ev);
+        }}
+        onDragOver={ev => {
+          ev.preventDefault();
+          ev.dataTransfer.dropEffect = 'move';
+        }}
+      >
+        <p>Drop the thumbs from the viewers here</p>
+        <button onClick={mergeDocuments}>Download</button>
+      </div>
+      <div className="list" ref={fileListRef}>
+        {thumbArray.map((thumb) => {
+          return <img src={thumb.toDataURL()} />
+        })}
+      </div>
     </div>
   );
 };
