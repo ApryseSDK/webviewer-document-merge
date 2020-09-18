@@ -4,5 +4,22 @@
   margin: 20px;
   flex: 1;
   margin: 8px;
-  height: 300px;
+  height: 250px;
 }
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: flex-start;
+  width: 400px;
+}
+
+img {
+  padding: 5px;
+  width: 30%;
+  -webkit-box-shadow: 1px 1px 10px #999;
+          box-shadow: 1px 1px 10px #999;
+}
+
