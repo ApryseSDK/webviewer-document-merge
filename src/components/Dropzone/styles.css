@@ -19,7 +19,6 @@
 img {
   padding: 5px;
   width: 30%;
-  -webkit-box-shadow: 1px 1px 10px #999;
-          box-shadow: 1px 1px 10px #999;
+  box-shadow: 0 0 3px 0 #adb5bd;
 }
 
