@@ -1,10 +1,10 @@
 # WebViewer - React - Dropzone sample
 
-[WebViewer](https://www.pdftron.com/webviewer) is a powerful JavaScript-based PDF Library that's part of the [PDFTron PDF SDK](https://www.pdftron.com). It provides a slick out-of-the-box responsive UI that interacts with the core library to view, annotate and manipulate PDFs that can be embedded into any web project.
+[WebViewer](https://www.pdftron.com/documentation/web/) is a powerful JavaScript-based PDF Library that's part of the [PDFTron PDF SDK](https://www.pdftron.com). It provides a slick out-of-the-box responsive UI that interacts with the core library to view, annotate and manipulate PDFs that can be embedded into any web project.
 
-![WebViewer UI](https://www.pdftron.com/downloads/pl/webviewer-ui.png)
+![WebViewer UI](https://github.com/PDFTron/webviewer-document-merge/blob/master/screen.png)
 
-This repo is specifically designed for any users interested in integrating WebViewer into React project. You can watch [a video here](https://youtu.be/bVhWXuLSL0k) to help you get started.
+This repo is specifically designed for any users interested in implementing a dropzone where users can drag and drop thumbnails from the two viewers and download the resulting file. 
 
 ## Initial setup
 
@@ -13,8 +13,6 @@ Before you begin, make sure your development environment includes [Node.js](http
 ## Install
 
 ```
-git clone https://github.com/PDFTron/webviewer-react-sample.git
-cd webviewer-react-sample
 npm install
 ```
 
@@ -41,4 +39,3 @@ See [contributing](./CONTRIBUTING.md).
 ## License
 
 See [license](./LICENSE).
-![](https://onepixel.pdftron.com/webviewer-react-sample)
