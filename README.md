@@ -2,6 +2,8 @@
 
 [WebViewer](https://www.pdftron.com/documentation/web/) is a powerful JavaScript-based PDF Library that's part of the [PDFTron PDF SDK](https://www.pdftron.com). It provides a slick out-of-the-box responsive UI that interacts with the core library to view, annotate and manipulate PDFs that can be embedded into any web project.
 
+You can [watch a video](https://youtu.be/ZKt38W7Ro4Y) that walks through the demo of this app.
+
 ![WebViewer UI](https://github.com/PDFTron/webviewer-document-merge/blob/master/screen2.png)
 
 This repo is specifically designed for any users interested in implementing a dropzone where users can drag and drop thumbnails from the two viewers and download the resulting file. 
