@@ -4,7 +4,6 @@ import WebViewer from '@pdftron/webviewer';
 const Viewer = ({ docToLoad }) => {
   const viewer = useRef(null);
 
-  // if using a class, equivalent of componentDidMount
   useEffect(() => {
     WebViewer(
       {
@@ -14,7 +13,6 @@ const Viewer = ({ docToLoad }) => {
       },
       viewer.current,
     ).then(instance => {
-      const { docViewer, Annotations } = instance;
       instance.enableFeatures([
         'ThumbnailMultiselect',
         'MultipleViewerMerging',
