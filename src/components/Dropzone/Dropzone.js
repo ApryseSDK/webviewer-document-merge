@@ -90,7 +90,7 @@ const Dropzone = () => {
       </div>
       <div className="list" ref={fileListRef}>
         {thumbArray.map((thumb, i) => {
-          return <img key={i} src={thumb.toDataURL()} />
+          return <img key={i} src={thumb.toDataURL()} alt={i} />
         })}
       </div>
     </div>

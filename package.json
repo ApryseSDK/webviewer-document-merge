@@ -15,10 +15,10 @@
     "fs-extra": "^7.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "test": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts test",
+    "eject": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts eject",
     "postinstall": "node tools/copy-webviewer-files.js"
   },
   "eslintConfig": {
