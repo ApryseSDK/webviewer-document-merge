@@ -3,30 +3,29 @@ import './styles.css';
 
 const Dropzone = () => {
   const dropRef = useRef(null);
-  const fileListRef = useRef(null);
   const [docs, addDocument] = useState([]);
   const [thumbArray, addThumbToArray] = useState([]);
-  const CoreControls = window.CoreControls;
-  CoreControls.setWorkerPath('/webviewer/lib/core');
 
   useEffect(() => {
     if (docs.length >= 1) {
+      const Core = window.instance.Core;
       const loadDocumentAndThumb = async () => {
-        const doc = await CoreControls.createDocument(docs[docs.length - 1]);
-        doc.loadThumbnailAsync(1, thumbnail => {
+        const doc = await Core.createDocument(docs[docs.length - 1]);
+        doc.loadThumbnail(1, (thumbnail) => {
           addThumbToArray([...thumbArray, thumbnail]);
         });
       }
-      loadDocumentAndThumb();     
+      loadDocumentAndThumb();
     }
   }, [docs]);
 
   const mergeDocuments = async () => {
+    const Core = window.instance.Core;
     if (docs.length > 0) {
-      const doc = await CoreControls.createDocument(docs[0]);
+      const doc = await Core.createDocument(docs[0]);
       let i;
       for (i = 1; i < docs.length; i++) {
-        let doc2 = await CoreControls.createDocument(docs[i]);
+        let doc2 = await Core.createDocument(docs[i]);
         await doc.insertPages(doc2);
       }
 
@@ -36,9 +35,10 @@ const Dropzone = () => {
       downloadBlob(blob);
     }
     addDocument([]);
+    addThumbToArray([]);
   };
 
-  const downloadBlob = blob => {
+  const downloadBlob = (blob) => {
     const a = document.createElement('a');
     document.body.appendChild(a);
     const url = window.URL.createObjectURL(blob);
@@ -51,7 +51,7 @@ const Dropzone = () => {
     }, 0);
   };
 
-  const onDropEvent = ev => {
+  const onDropEvent = (ev) => {
     ev.preventDefault();
     const viewerID = ev.dataTransfer.getData('dataTransferWebViewerFrame');
     const otherWebViewerIframe = window.parent.document.querySelector(
@@ -80,7 +80,7 @@ const Dropzone = () => {
         onDrop={ev => {
           onDropEvent(ev);
         }}
-        onDragOver={ev => {
+        onDragOver={(ev) => {
           ev.preventDefault();
           ev.dataTransfer.dropEffect = 'move';
         }}
@@ -88,9 +88,9 @@ const Dropzone = () => {
         <p>Drop the thumbs from the viewers here</p>
         <button onClick={mergeDocuments}>Download</button>
       </div>
-      <div className="list" ref={fileListRef}>
+      <div className="list">
         {thumbArray.map((thumb, i) => {
-          return <img key={i} src={thumb.toDataURL()} />
+          return <img key={i} src={thumb.toDataURL()} alt={i} />
         })}
       </div>
     </div>
