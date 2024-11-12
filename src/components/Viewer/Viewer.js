@@ -5,20 +5,24 @@ const Viewer = ({ docToLoad }) => {
   const viewer = useRef(null);
 
   useEffect(() => {
-    WebViewer(
+    WebViewer.Iframe(
       {
         path: '/webviewer/lib',
         initialDoc: docToLoad,
+        ui: 'legacy',
         loadAsPDF: true,
       },
       viewer.current,
-    ).then(instance => {
-      instance.enableFeatures([
+    ).then((instance) => {
+      if (!window.instance) {
+        window.instance = instance;
+      }
+      instance.UI.enableFeatures([
         'ThumbnailMultiselect',
         'MultipleViewerMerging',
       ]);
-      instance.enableElements(['documentControl']);
-      instance.openElements(['leftPanel']);
+      instance.UI.enableElements(['documentControl']);
+      instance.UI.openElements(['leftPanel']);
     });
   }, []);
 

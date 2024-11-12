@@ -3,16 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@pdftron/webviewer": "^7.0.1",
-    "@pdftron/webviewer-react-toolkit": "^0.6.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "2.1.1"
+    "@pdftron/webviewer": "^11.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "btoa": "^1.2.1",
-    "download": "^7.1.0",
-    "fs-extra": "^7.0.1"
+    "fs-extra": "^11.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
