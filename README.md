@@ -19,7 +19,7 @@ This repo is specifically designed for any user interested in implementing a dro
 
 ```
 gh repo clone ApryseSDK/webviewer-document-merge
-cd webviewer-angularjs-sample
+cd webviewer-document-merge
 npm install
 ```
 
